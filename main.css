@@ -1,0 +1,47 @@
+.continar{
+    margin: 0 auto;
+    min-width: 375px;
+    max-width: 1920px;
+}
+
+.continar::after{
+    content: "";
+    display: block;
+    clear: both;
+}
+
+.header {
+    position: fixed;
+    top: 0;left: 0;right: 0;  
+    background-color:#E3DCFF;
+    height: 70px;
+    width: 100%;
+}
+
+.table{
+    background-color: black;
+    float: left;
+    margin-top: 80px;
+    height: 590px;
+    width: 590px; 
+}
+
+.menu{
+    background-color:#F2F2F2;
+    float: left;
+    margin: 80px 30px 50px 80px;
+    height: 590px;
+    width: 350px; 
+}
+
+.frame::after{
+    content: "";
+    display: block;
+}
+
+#box_64{
+    background-color:#F2F2F2;
+    float: left;
+    height: 70px;
+    width: 70px; 
+}

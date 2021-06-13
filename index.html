@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <style>
+            @import url(main.css);
+        </style>
+    </head>
+    <body>
+        <div class="continar">
+            <div class="header">
+                オセロゲーム
+            </div>
+            <div class="table">
+                <div id="frame">
+                    <div id="box_64"></div>
+                   
+                </div>
+            </div>
+            <div class="menu">
+
+            </div>
+        </div>
+        <script>//ボードの作成
+            for(let i=1;i<64;i++){
+                //--------要素--------//
+                let newElement = document.createElement("div");
+                let name = 'box_'+i;
+                newElement.setAttribute("id",name);
+                parentDiv = document.getElementById("frame");
+                let base = document.getElementById("box_64");
+                parentDiv.insertBefore(newElement,base);
+                //----------css----------------------//
+                newElement.style.backgroundColor = "#025502";
+                newElement.style.width = "70px";
+                newElement.style.height = "70px";
+                newElement.style.margin = "1px 1px 1px 1px";
+                newElement.style.float = "left";
+                parentDiv.style.margin = "6px 6px 6px 6px"
+            }   
+        </script>
+    </body>
+</html>
