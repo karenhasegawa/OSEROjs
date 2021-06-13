@@ -17,6 +17,7 @@
     background-color:#E3DCFF;
     height: 70px;
     width: 100%;
+    z-index: 3;
 }
 
 .table{
@@ -35,17 +36,24 @@
     width: 350px; 
 }
 
-.frame::after{
+#frame::after{
     content: "";
     display: block;
 }
 
-#box_64{
-    background-color:#F2F2F2;
-    float: left;
-    height: 70px;
-    width: 70px; 
+#frame{
+    margin:6px 6px 6px 6px;
 }
 
 /*------駒------*/
-
+.pieace{
+    position: absolute;
+    left: 7%;
+    right: 7%;
+    top:7%;
+    width: 60px;
+    height: 60px;
+    border-radius: 60px;
+    background-color: aliceblue;
+    display: none;
+}
