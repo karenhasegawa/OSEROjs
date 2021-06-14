@@ -1,16 +1,16 @@
 function Setup(){
 
     Array_Id = new Array(0);
+    let changepieace = new ChangePieace(Array_Id);
 
-    //
-    new First(Array_Id);
+    //初期設定
+    new First(Array_Id);//基礎作成   
+    changepieace.first_Coord_setDisc();//最初の駒セット
 
-    //
-    new GameDirecter(Array_Id);
-    let changepieace = new ChangePieace();
-    changepieace.setDisc(Array_Id);
+    //システム管理
+    
 
-    //
+    //表示管理
     //new GameView();
 
 
