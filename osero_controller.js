@@ -1,6 +1,7 @@
 window.addEventListener('DOMContentLoaded',function(){
 
-    
+    let Array_Id = new Array(0);
+
     for(let i=0;i<64;i++){
     //ボードの作成
         //--------要素--------//
@@ -19,6 +20,9 @@ window.addEventListener('DOMContentLoaded',function(){
         newElement.style.position="relative";
         newElement.style.display="block";
 
+        //----------ID保存------------------//
+        Array_Id.push(name);
+
     //駒の作成
         //----------要素----------//
         let newPieace = document.createElement("div");
@@ -33,7 +37,16 @@ window.addEventListener('DOMContentLoaded',function(){
 
     //初期設定完了
 
-    setDisc(8,8,1);
+    setup();
+
+    function Setup(){
+
+        
+    }
+    
+    //配列の確認用
+//    console.log(Array_Id);
+    let pieace = document.querySelector('.pieace');
 
     //(x,y)のマスに石を置く
     //d=0:石を消す
@@ -42,8 +55,20 @@ window.addEventListener('DOMContentLoaded',function(){
     function setDisc(x,y,d){
         let p = y * 8 + x;//2次元座標を1次元座標に変換
         console.log(p);
+        let ID = document.getElementById(Array_Id[p]);
+        let pieaceElement = ID.firstChild;
+       
+            pieaceElement.style.display = d == 0 ? "none" : "block";
+
+        if(d > 0){
+            pieaceElement.style.backgroundColor = d == 1 ? "black" : "white";
+        }
+
+        console.log(pieaceElement);
 
     }
+
+   
     
     
 });
