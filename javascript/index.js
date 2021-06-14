@@ -1,6 +1,6 @@
 
  window.addEventListener('DOMContentLoaded',function(){
 
-    new Setup();
+    Setup();
 
 });
