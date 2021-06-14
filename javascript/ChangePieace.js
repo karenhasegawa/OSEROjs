@@ -1,18 +1,16 @@
-class ChangePieace extends GameDirecter{//子クラス、親クラスのメぞっとを使って拡張可能
+class ChangePieace /*extends GameDirecter*/{//子クラス、親クラスのメぞっとを使って拡張可能
 
-    constructor(arrowid){ 
-        console.log(hello);
+    constructor(){ 
         this.x = 0;
         this.y = 0;
         this.d = 1;
-
     }
 
     //(x,y)のマスに石を置く
     //d=0:石を消す
     //d=1:黒石を置く
     //d=2:白石を置く
-    setDisc(){
+    setDisc(arrowid){
 
         console.log(arrowid);
 

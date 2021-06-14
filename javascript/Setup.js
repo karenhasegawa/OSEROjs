@@ -1,31 +1,19 @@
-class Setup{
-    
-    //Array_Id = new Array(0);
+function Setup(){
 
-    constructor(){
-        let ArrowId= new Array(0);
-                                            console.log("Setup-start");
-        ArrowId = this.Start(ArrowId);
-  //                                          console.log(ArrowId);
-        this.GmameMaker(ArrowId);
-        this.View();
-    }
+    Array_Id = new Array(0);
 
-    Start(ArrowId){
-       new First(ArrowId);
-        return ArrowId;
-    }
+    //
+    new First(Array_Id);
 
-    GmameMaker(ArrowId){
-   
-       new GameDirecter(ArrowId);
-    }
+    //
+    new GameDirecter(Array_Id);
+    let changepieace = new ChangePieace();
+    changepieace.setDisc(Array_Id);
 
-    View(){
+    //
+    //new GameView();
 
-    }
 
 
 }
-
   

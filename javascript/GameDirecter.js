@@ -7,5 +7,3 @@ class GameDirecter{//親クラス
 
     
 }
-
-ChangePieace.setDisc(); 
