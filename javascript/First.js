@@ -1,8 +1,9 @@
 class First{
 
     constructor(ArrowId){
-        console.log(ArrowId);
+ //                                      console.log(ArrowId);
         this.Roop(ArrowId);
+ //                                       console.log(ArrowId);
     }
 
     Roop(arrowid){
@@ -16,6 +17,9 @@ class First{
             //----------ID保存------------------//
             arrowid.push(name);
         }
+
+//                                          console.log(arrowid);
+        return arrowid;
         
     }
 
