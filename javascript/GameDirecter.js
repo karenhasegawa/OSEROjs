@@ -3,6 +3,7 @@ class GameDirecter{//親クラス
     constructor (arrowid){
         //console.log(arrowid);
         this.arrowid=arrowid;
+        this.hantei_array = Array(91);
     }
 
     //(x,y)のマスに石を置く
@@ -23,4 +24,10 @@ class GameDirecter{//親クラス
         }
     }
     
+
+    Othello(){
+        ///for(let i=0; i < this.hantei_array.length ;i++)
+        
+
+    }
 }
