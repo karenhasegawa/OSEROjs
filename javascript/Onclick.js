@@ -3,11 +3,12 @@ class Onclick extends GameDirecter{
     constructor(turn,id){
  
         super(turn);
+        this.Conect(id);
     }
 
-    Conect(){
+    Conect(id){
 
-        super.Conect();
+        super.Conect(id);
 
     }
 }

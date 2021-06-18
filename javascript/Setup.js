@@ -11,7 +11,7 @@ function Setup(){//HTML/CSSに書き込むための初期設定+開始
 
 
     //ゲーム開始
-    let turn = 0;
+    let turn = 1;
     new GameDirecter(turn);//コンポーネントの呼び出しは1度だけ；   
     
     
