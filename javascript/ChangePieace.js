@@ -10,11 +10,16 @@ class ChangePieace extends GameDirecter{//子クラス、親クラスのメぞ�
     //d=2:白石を置く
     first_Coord_setDisc(){
       
+        //初期局面
         super.setDisc(3,3,2);
         super.setDisc(4,3,1);
         super.setDisc(3,4,1);
         super.setDisc(4,4,2);
 
+    }
+    
+    Coord_setDisc(){
+        
     }
     
 
