@@ -50,7 +50,7 @@ class Judgment{
         let e = this.changecoordinate.pos(x,y);//8×8の2次元座標9×10+1の1次元座標に変更
         let t = turn % 2;//偶数の判定
         let player=0;
-        let d5;
+        //let d5;
         this.x = x;
         this.y = y;
 
@@ -61,20 +61,37 @@ class Judgment{
 
         let pieace=Array(7);
 
-       
+        
+        if(t==0)player=2;//先手黒に設定
+        else player=1;//後手白に設定
+
+       //　→　の処理
         if(hantei_array[e]==0){//マスが空いているか。
-
-           for(let i=e+1;hantei_array[i]!=3;i+=Vector[5]){//　→　の処理
+            if(player==hantei_array[e+1])console.log("→:そこにはおけません");//原点のとなりに同じ色がある
+            else {
+                for(let i=e+1;hantei_array[i]!=3;i+=Vector[5]){
                 
-                x += Vector[5];
-                if(t==0)player=2;//先手黒に設定
-                else player=1;//後手白に設定
-
-                console.log(x,y);
-                if(player==hantei_array[e+1])break;
-                else if(hantei_array[i]==2) this.changepeace.setDisc(x,y,2);//違う色
-                else if(hantei_array[i]==1) this.changepeace.setDisc(x,y,1);//違う色
-
+                    x += Vector[5];                   
+    
+                    //console.log(x,y);
+                   
+                    if(hantei_array[i]==2){//原点のとなりは
+                        if(hantei_array[i+Vector[5]]==1){//
+                            console.log("good");
+                           break;
+                        }
+                        pieace.push(2);
+                    }
+                    else if(hantei_array[i]==1){//
+                        if(hantei_array[i+Vector[5]]==2){//
+                            console.log("good2");
+                            break;
+                        }
+                        pieace.push(2);
+                    }
+    
+    
+                }
             }
             
             /*for(let j=0;player != pieace[j];j++){
