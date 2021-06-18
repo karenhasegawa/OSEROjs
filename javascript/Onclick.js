@@ -2,7 +2,7 @@ class Onclick extends GameDirecter{
 
     constructor(id){
 
-        super();
+        super(0,1);
       this.Conect(id);
     }
 
