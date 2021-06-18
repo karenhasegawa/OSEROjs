@@ -46,12 +46,10 @@ class Judgment{
 
     Othello(x,y){
 
-        let a = this.changecoordinate.pos(x,y);
+        let e = this.changecoordinate.pos(x,y);
         console.log(this.Hantei_Array);
-        this.Hantei_Array[a]=1;
-        console.log(this.Hantei_Array[a]);
-        
-        //this.changepeace.setDisc(x,y,this.Hantei_Array[e]);
+        this.Hantei_Array[e]=1;        
+        this.changepeace.setDisc(x,y,this.Hantei_Array[e]);
 
 
     }

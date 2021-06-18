@@ -9,6 +9,10 @@ class GameDirecter{
         this.judgment.Setup_Othello(this.Hantei_array);
     }
 
+    Conect(x,y){
+        this.judgment.Othello(x,y);
+    }
+
 
    
 
