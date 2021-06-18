@@ -12,7 +12,8 @@ class GameDirecter{//親クラス
     //d=2:白石を置く
     setDisc(x,y,d){
         
-        let p = y * 8 + x;//2次元座標を1次元座標に変換
+        let p = y * 8 + x;//8×8の2次元座標を[64]の1次元座標に変換
+                                // [64]の1次元座標を8×8の2次元座標に変換 x=p%8; y=Math.floor(p/8);余り切り捨て
         console.log(p);
         let ID = document.getElementById(this.arrowid[p]);
         let pieaceElement = ID.firstChild;
