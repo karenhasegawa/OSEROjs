@@ -1,20 +1,28 @@
-class ChangePieace extends GameDirecter{//子クラス、親クラスのメぞっとを使って拡張可能
+class ChangePieace{
 
-    constructor(Array_Id){
-       super(Array_Id);
+    constructor(arrowid){
+      this.arrowid=arrowid;
     }
     
-    //(x,y)のマスに石を置く
+    //(x,y,d)のマスに石を置く
     //d=0:石を消す
     //d=1:黒石を置く
     //d=2:白石を置く
-    first_Coord_setDisc(){
-      
-        //初期局面
-        super.setDisc(3,3,2);
-        super.setDisc(4,3,1);
-        super.setDisc(3,4,1);
-        super.setDisc(4,4,2);
+    setDisc(x,y,d){
+        let changecoordinate = new ChangeCoordinate;
+        let p = changecoordinate.pos_view(x,y);
+        let ID = document.getElementById(this.arrowid[p]);
+        let pieaceElement = ID.firstChild;
+
+        pieaceElement.style.display = d == 0 ? "none" : "block";
+
+        if(d > 0){
+            pieaceElement.style.backgroundColor = d == 1 ? "black" : "white";
+        }
+
+    }
+
+    Coord_getDisc(){
 
     }
     

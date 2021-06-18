@@ -5,7 +5,8 @@ function Setup(){
 
     //初期設定
     new First(Array_Id);//基礎作成   
-    changepieace.first_Coord_setDisc();//最初の駒セット
+    changepieace.first_Coord_getDisc();//最初の駒セット
+   
 
     //システム管理
     
