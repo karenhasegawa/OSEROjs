@@ -1,18 +1,19 @@
-function Setup(){
+function Setup(){//HTML/CSSに書き込むための初期設定+開始
 
     Array_Id = new Array(0);
-    let changepieace = new ChangePieace(Array_Id);
 
-    //初期設定
-    new First(Array_Id);//基礎作成   
-    changepieace.first_Coord_getDisc();//最初の駒セット
-   
 
-    //システム管理
-    
+    //基礎作成の初期設定
+    new First(Array_Id);
 
     //表示管理
     //new GameView();
+
+
+    //ゲーム開始
+    new GameDirecter(Array_Id);//コンポーネントの呼び出しは1度だけ；   
+    
+    
 
 
 

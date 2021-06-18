@@ -11,7 +11,7 @@ class First{
         let name;
 
         for(let i=0;i<64;i++){
-            name = 'box_'+i;
+            name = i;
             this.BoardMaker(name);
             this.PieaceMaker(name);
             //----------ID保存------------------//
@@ -30,6 +30,10 @@ class First{
         newElement.setAttribute("id",name);
         let parentDiv = document.getElementById("frame");
         parentDiv.appendChild(newElement);
+
+        //------onclick追加-----------//
+        let input =document.getElementById(name);
+        input.setAttribute("onclick","getID(this)");
 
         //----------css----------------------//
             newElement.style.backgroundColor = "#025502";
