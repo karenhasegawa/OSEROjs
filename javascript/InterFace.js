@@ -1,6 +1,6 @@
 function getID(c){
 
-    new Onclick(c.id);
+    new Onclick(1,c.id);
 
 }
 

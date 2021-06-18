@@ -1,6 +1,6 @@
 class ChangePieace{
 
-    constructor(a){
+    constructor(){
       
     }
     

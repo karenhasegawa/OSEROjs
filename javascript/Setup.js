@@ -12,7 +12,7 @@ function Setup(){//HTML/CSSに書き込むための初期設定+開始
 
     //ゲーム開始
     let turn = 0;
-    new GameDirecter(Array_Id,turn);//コンポーネントの呼び出しは1度だけ；   
+    new GameDirecter(turn);//コンポーネントの呼び出しは1度だけ；   
     
     
 

@@ -1,27 +1,35 @@
 class GameDirecter{
 
-    constructor (arrowid,turn){
+    constructor (turn){
+
+        this.judgment = new Judgment;//判定の初期設定へ
  
-        this.turn += turn;
-        if( this.turn == 0){
-            new ChangePieace(arrowid);
-            this.Hantei_array = Array(91);//ゲーム開発で判定配列を生成
-            this.judgment = new Judgment;//判定の初期設定へ
-            this.turn = this.judgment.Setup_Othello(this.Hantei_array);
+        if( turn == 0 ){
+            this.Hantei_array = Array(91);//ゲーム開始で判定配列を生成
+            this.judgment.Setup_Othello(this.Hantei_array);
+            this.turn = 1;
+            console.log("turn == 0");
         }
         
+        if( turn > 0 ){
+
+            GameDirecter.turn++; 
+            console.log(GameDirecter.turn);
+        } 
     }
 
 
 
     Conect(x,y){
-        let t = this.turn;
-        this.judgment.Othello(x,y,t);
+
+        let changecoordinate = new ChangeCoordinate;
+        
+        x = changecoordinate.pos_view_x(id);
+        y = changecoordinate.pos_view_y(id);
+
+        
     }
 
-
-   
-
-    
-    
 }
+
+GameDirecter.turn = 0;
