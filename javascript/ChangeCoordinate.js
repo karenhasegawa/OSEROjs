@@ -8,6 +8,7 @@ class ChangeCoordinate {
     }
 
     pos_view(x,y){
+       
         return y * 8 + x;//8×8の2次元座標を[64]の1次元座標に変換
     }
     
@@ -16,11 +17,11 @@ class ChangeCoordinate {
         return p%8;
     }
 
-    pos_view_y(y){
+    pos_view_y(p){
         return Math.floor(p/8);//余り切り捨て
     }
 
-    pos(x,y){//8×8の9×10+1の1次元座標に変更
+    pos(x,y){//8×8の2次元座標9×10+1の1次元座標に変更
         return (y+1) * 9 + x+1; 
     }
 
