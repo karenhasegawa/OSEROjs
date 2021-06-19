@@ -61,8 +61,12 @@ class Judgment{
         if(t==0)player=2;//先手黒に設定
         else player=1;//後手白に設定
 
-        if(player==1)console.log("今は白の番です");
-        if(player==2)console.log("今は黒の番です");//表示は1ターン遅延があるので注意
+        //(x,y,d)のマスに石を置く
+        //d=0:石を消す
+        //d=1:黒石を置く
+        //d=2:白石を置く
+        if(player==1)console.log("置いたのは黒の番です");
+        if(player==2)console.log("置いたのは白の番です");//表示は1ターン遅延があるので注意
     
         if(hantei_array[e]!=0){
             console.log("条件1リターン"); 
@@ -98,7 +102,6 @@ class Judgment{
                        
                         player==1 ? pieace.push(player) : pieace.push(2);//表示データの保存
                         coordinate.push(i);
-                        console.log("push可能");
                         n += 1;
                         continue;
                     }    
