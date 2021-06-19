@@ -42,13 +42,13 @@ class Judgment{
         
         console.log(hantei_array);
 
-        return 1;
+        return 0;
     }
 
     Othello(x,y,turn){
 
         let e = this.changecoordinate.pos(x,y);//8×8の2次元座標9×10+1の1次元座標に変更
-        let t = turn % 2;//偶数の判定
+        let t = turn % 2;//偶数の判定（パス判定では使えない）
         let player=0;
         //let d5;
         this.x = x;
@@ -57,7 +57,7 @@ class Judgment{
 
         let Vector=[-10,-9,-8,
                      -1, 0, 1,
-                      8, 9,10];
+                      8, 9,10];//八方向ベクトル
 
         let pieace=Array(7);
 
@@ -65,51 +65,52 @@ class Judgment{
         if(t==0)player=2;//先手黒に設定
         else player=1;//後手白に設定
 
-       //　→　の処理
-        if(hantei_array[e]==0){//マスが空いているか。
-            if(player==hantei_array[e+1])console.log("→:そこにはおけません");//原点のとなりに同じ色がある
-            else {
-                for(let i=e+1;hantei_array[i]!=3;i+=Vector[5]){
-                
-                    x += Vector[5];                   
-    
-                    //console.log(x,y);
+        console.log("今は"+player+"の番です。");
+
+        if(hantei_array[e]!=0)return -1;//マスが空いているか。
+
+        for(let j=0;j<9;j++){//8方向判定
+            console.log("現在のチェック座標:"+Vector[j]);
+            if(player==hantei_array[e+Vector[j]]){
+                console.log(Vector[j]+":この方向にはおけません");//原点のとなりに同じ色がある
+                j--;
+                continue;
+            }
+            else {//その方向に置けるなら
+
+                for(let i=e+1;hantei_array[i]!=3;i+=Vector[j]){//番外ではない限りチェックし続ける       
                    
-                    if(hantei_array[i]==2){//原点のとなりは
-                        if(hantei_array[i+Vector[5]]==1){//
-                            console.log("good");
-                           break;
-                        }
-                        pieace.push(2);
-                    }
-                    else if(hantei_array[i]==1){//
-                        if(hantei_array[i+Vector[5]]==2){//
-                            console.log("good2");
-                            break;
-                        }
-                        pieace.push(2);
+                    if(hantei_array[i]==hantei_array[i+1])break;//現在地のとなりと同じ色なら
+
+                    else if(hantei_array[i]!=hantei_array[i+1]){//
+
+                        player==1 ? pieace.push(player) : pieace.push(2);
+                        console.log("push可能");
                     }
     
     
                 }
-            }
-            
-            /*for(let j=0;player != pieace[j];j++){
-                console.log(pieace[j]);
-                x +=  Vector[5];            
-                d5 = hantei_array[e+x];                
-                this.changepeace.setDisc(x,y,d5);//ｙ座標は変わらない
-                console.log(x,y,d5);
-            }*/
+             }
 
+             console.log(pieace);
+                   
         }
+
+         /*表示の呼び出し*/
+             for(let j=9;j==0;j--){
+                for(let i=e;hantei_array[i]!=3;i+=Vector[j]){
+                    hantei_array[i]=pieace.pop();
+                    console.log(hantei_array[i]);
+                    x = this.changecoordinate.pos_x(hantei_array[i]);
+                    y = this.changecoordinate.pos_y(hantei_array[i]);
+                    this.changepeace.setDisc(x,y,hantei_array[i]);
+                }
+             }
+        return 0;
               
-       
-
-
     }
 
-}
+}//クラス終わり
 
 Judgment.Hantei_array = Array(91);
 let hantei_array = Judgment.Hantei_array;//ゲーム開始で判定配列を生成

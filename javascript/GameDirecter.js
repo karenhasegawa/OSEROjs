@@ -27,7 +27,12 @@ class GameDirecter{
         x = changecoordinate.pos_view_x(id);
         y = changecoordinate.pos_view_y(id);
 
-        this.judgment.Othello(x,y,turn);
+        GameDirecter.turn += this.judgment.Othello(x,y,turn);//ターンを返せる
+        /*戻り値
+            －1:ターンを進めない
+            0:ターンを進める
+        */
+       console.log( "現在ターン:"+GameDirecter.turn);
     }
 
 }
