@@ -13,8 +13,11 @@ class ChangePieace{
         let changecoordinate = new ChangeCoordinate;
         let p = changecoordinate.pos_view(x,y);
         let ID = document.getElementById(p);
-        let pieaceElement = ID.firstChild;
 
+        console.log(ID);
+
+        let pieaceElement = ID.firstChild;
+        
         pieaceElement.style.display = d == 0 ? "none" : "block";
 
         if(d > 0){
@@ -22,5 +25,4 @@ class ChangePieace{
         }
 
     }
-
 }

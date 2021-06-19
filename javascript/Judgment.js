@@ -39,9 +39,6 @@ class Judgment{
                 }
             }
         }
-        
-        console.log(hantei_array);
-
         return 0;
     }
 
@@ -50,74 +47,107 @@ class Judgment{
         let e = this.changecoordinate.pos(x,y);//8×8の2次元座標9×10+1の1次元座標に変更
         let t = turn % 2;//偶数の判定（パス判定では使えない）
         let player = 0;
-        this.x = x;
-        this.y = y;
-
+        let coordinate= new Array(64);
 
         let Vector=[-10,-9,-8,
                      -1, 0, 1,
                       8, 9,10];//八方向ベクトル
 
-        let pieace=Array(7);
+        let pieace= new Array(7);
+        let n = 0;
 
         
         if(t==0)player=2;//先手黒に設定
-        else player=1;//後手白に設定
+        else player=1;//後手白に設定。
 
-        if(player==1)console.log("今は白の番です。");
-        if(player==2)console.log("今は黒の番です。");//表示は1ターン遅延があるので注意
-        console.log("hantei_array:"+hantei_array);
-
-        if(hantei_array[e]!=0)return -1;//マスが空いているか。
+        if(player==1)console.log("今は白の番です");
+        if(player==2)console.log("今は黒の番です");//表示は1ターン遅延があるので注意
+    
+        if(hantei_array[e]!=0)return -1;//マスが空いているか。(条件1) 
 
         for(let j=0;j<9;j++){//8方向判定
+
             console.log("現在のチェック座標:"+Vector[j]);
-            if(player==hantei_array[e+Vector[j]] || hantei_array[e+Vector[j]]==0 || hantei_array[e+Vector[j]]==3){
+
+            if(hantei_array[e+Vector[j]]==player || hantei_array[e+Vector[j]]==0 || hantei_array[e+Vector[j]]==3){
                 console.log(Vector[j]+":この方向には裏返しできません");
+                if(j==8)return -1;
                 continue;
                 /*
                     現在のベクトルに対し裏返せない(置き場におけない)条件
                     ・現在のベクトルに対し、置き場のとなりがplayerと同じ色であるとき
                     ・現在のベクトルに対し、置き場のとなりが空きマスであるとき
-                    ・現在のベクトルに対し、置き場のとなりが番外である時
+                    ・現在のベクトルに対し、置き場のとなりが番外である時                    
+                    （条件2までを処理）
                 */
-            }
-            else {//その方向に置けるなら
+            }//条件2終了
 
-                for(let i=e+Vector[j];hantei_array[i]!=player;i+=Vector[j]){//playerと同じ色ではない限りチェックし続ける       
+            else{//条件3開始
+
+                for(let i=e+Vector[j];hantei_array[i]!=hantei_array[i+Vector[j]];i+=Vector[j]){//playerと同じ色ではない限りチェックし続ける (条件3)      
                    
-                    if(hantei_array[i]==hantei_array[i+Vector[j]])break;//ベクトルのとなりと同じ色なら
+                  
+                    /* if(hantei_array[i+Vector[j]]==player){//ベクトルの先がplayerと同じ色の時
+                        console.log("");
+                        break;
+                    }*/
 
-                    else if(hantei_array[i]!=hantei_array[i+Vector[j]]){//ベクトルのとなりと違う色なら
-
-                        
+                    if(player==hantei_array[i+Vector[j]]){//ベクトルのとなりと違う色なら
+                       
                         player==1 ? pieace.push(player) : pieace.push(2);//表示データの保存
+                        coordinate.push(i);
                         console.log("push可能");
+                        n += 1;
                         continue;
                     }
+                   // }
        
                 }
+                
+                console.log("push回数:"+n);
 
-                /*表示の呼び出し*/
-                hantei_array[e]=player;
-                this.changepeace.setDisc(x,y,hantei_array[e]);//置く駒の表示
+                if(n!=0){ /*表示の呼び出し*/
+                    
+                    hantei_array[e]=player;
+                    this.changepeace.setDisc(x,y,hantei_array[e]);//置く駒の表示
+                    console.log(x,y,hantei_array[e]);
 
-                for(let j=8;j>-1;j--){//末端からPOP
-                    for(let i=e+Vector[j];hantei_array[i]==1 || hantei_array[i]==2;i+=Vector[j]){
-                        hantei_array[i]=pieace.pop();
-                        console.log(hantei_array[i]+pieace);
-                        x = this.changecoordinate.pos_x(hantei_array[i]);
-                        y = this.changecoordinate.pos_y(hantei_array[i]);
-                        this.changepeace.setDisc(x,y,hantei_array[i]);
-                        if(pieace==null)break;
-                    }
-                }
-            }//その方向に置ける条件終了                  
-        }
+                    for(let j=n-1;j>-2;j--){//末端からPOP
 
-        return 0;//ターンは変更のまま
+                        console.log(coordinate);
+
+                        if(j==-1){
+
+                            console.log("条件3をクリア後脱出");
+                            return 0;//ターンは変更のまま//条件3をクリア後脱出
+                        }
+                        else{
+                            let pop = coordinate.pop();
+                            let pi =  pieace.pop();
+                                                                   
+                            x = this.changecoordinate.pos_x(pop);//9×10+1の1次元座標を8×8の2次元座標に変更
+                            y = this.changecoordinate.pos_y(pop);//9×10+1の1次元座標を8×8の2次元に変更
+                            hantei_array[pop]=pi;
+                            /*9×10+1の座標はi*/ 
+                            console.log(x,y,hantei_array[pop]);
+                            this.changepeace.setDisc(x,y,hantei_array[pop]);
+                            
+                        }
+                    }                  
+                }//表示終了
+
+                n=0;
+
+                if(j==8){
+                    console.log("全てのベクトルが3の条件に合わない");
+                    return -1;//3の条件に合わない場合
+                }               
+                
+            }//条件3終了
+
+        }//8方向判定終了
               
-    }
+    }//othello
 
 }//クラス終わり
 

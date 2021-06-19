@@ -17,8 +17,6 @@ class GameDirecter{
         } 
     }
 
-
-
     Conect(id){
 
         let changecoordinate = new ChangeCoordinate;
