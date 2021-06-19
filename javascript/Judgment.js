@@ -55,6 +55,7 @@ class Judgment{
 
         let pieace= new Array(7);
         let n = 0;
+        let count=0;
 
         
         if(t==0)player=2;//先手黒に設定
@@ -63,15 +64,20 @@ class Judgment{
         if(player==1)console.log("今は白の番です");
         if(player==2)console.log("今は黒の番です");//表示は1ターン遅延があるので注意
     
-        if(hantei_array[e]!=0)return -1;//マスが空いているか。(条件1) 
+        if(hantei_array[e]!=0){
+            console.log("条件1リターン"); 
+            return -1;//マスが空いているか。(条件1)
+            
+        }
 
         for(let j=0;j<9;j++){//8方向判定
+
+            n=0;
 
             console.log("現在のチェック座標:"+Vector[j]);
 
             if(hantei_array[e+Vector[j]]==player || hantei_array[e+Vector[j]]==0 || hantei_array[e+Vector[j]]==3){
-                console.log(Vector[j]+":この方向には裏返しできません");
-                if(j==8)return -1;
+                console.log(Vector[j]+":この方向には裏返しできません");               
                 continue;
                 /*
                     現在のベクトルに対し裏返せない(置き場におけない)条件
@@ -84,21 +90,31 @@ class Judgment{
 
             else{//条件3開始
 
-                for(let i=e+Vector[j];hantei_array[i]!=hantei_array[i+Vector[j]];i+=Vector[j]){//playerと同じ色ではない限りチェックし続ける (条件3)      
+                for(let i=e+Vector[j];hantei_array[i]==1||hantei_array[i]==2;i+=Vector[j]){//playerと同じ色ではない限りチェックし続ける (条件3)      
                    
-                    if(hantei_array[i+Vector[j]]==0 || hantei_array[i+Vector[j]]==3){//ベクトルの先に
-                        for(let u=n-1;u>-2;u--){
-                            coordinate.pop();pieace.pop();//データ消去
-                            break;
-                        }
-                    }                    
-                    if(player==hantei_array[i+Vector[j]]){//ベクトルのとなりと違う色なら
+                    console.log("ベクトルの判定開始:"+i);
+
+                    if(player!=hantei_array[i]){//ベクトルのとなりと違う色なら
                        
                         player==1 ? pieace.push(player) : pieace.push(2);//表示データの保存
                         coordinate.push(i);
                         console.log("push可能");
                         n += 1;
                         continue;
+                    }    
+
+                    if(player==hantei_array[i] || hantei_array[i]==0 || hantei_array[i]==3){                        
+                        
+                        if(player!=hantei_array[i]){
+                            for(let u=n-1;u>-2;u--){
+                                coordinate.pop();pieace.pop();//データ消去
+                                console.log(Vector[j]+":データ消去");
+                                n=0;
+                                break;
+                            }
+                        }
+                        
+                        break;          
                     }
        
                 }
@@ -106,6 +122,8 @@ class Judgment{
                 console.log("push回数:"+n);
 
                 if(n!=0){ /*表示の呼び出し*/
+
+                    count +=1;//turnのためのカウント
                     
                     hantei_array[e]=player;
                     this.changepeace.setDisc(x,y,hantei_array[e]);//置く駒の表示
@@ -117,7 +135,6 @@ class Judgment{
 
                         if(u==-1){
                             console.log("条件3をクリア後脱出");
-                            if(j==8)return 0;//ターンは変更のまま//条件3をクリア後脱出
                             break;                          
                         }
                         else{
@@ -132,19 +149,16 @@ class Judgment{
                             this.changepeace.setDisc(x,y,hantei_array[pop]);
                             
                         }
+
                     }                  
-                }//表示終了
-
-                n=0;
-
-                if(j==8){
-                    console.log("全てのベクトルが3の条件に合わない");
-                    return -1;//3の条件に合わない場合
-                }               
+                }//表示終了        
                 
             }//条件3終了
 
         }//8方向判定終了
+
+        if(count==0)return -1;
+        else return 0;
               
     }//othello
 
