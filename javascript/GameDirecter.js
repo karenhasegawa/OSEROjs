@@ -7,6 +7,7 @@ class GameDirecter{
  
         if( turn == 1 ){
             this.judgment.Setup_Othello();
+            console.log("今は黒の番です。");
         }
         
         if( turn > 1 ){
