@@ -80,7 +80,6 @@ class Judgment{
                     ・現在のベクトルに対し、置き場のとなりがplayerと同じ色であるとき
                     ・現在のベクトルに対し、置き場のとなりが空きマスであるとき
                     ・現在のベクトルに対し、置き場のとなりが番外である時
-
                 */
             }
             else {//その方向に置けるなら
@@ -103,7 +102,7 @@ class Judgment{
                 hantei_array[e]=player;
                 this.changepeace.setDisc(x,y,hantei_array[e]);//置く駒の表示
 
-                for(let j=8;j==0;j--){//末端からPOP
+                for(let j=8;j>-1;j--){//末端からPOP
                     for(let i=e+Vector[j];hantei_array[i]==1 || hantei_array[i]==2;i+=Vector[j]){
                         hantei_array[i]=pieace.pop();
                         console.log(hantei_array[i]+pieace);
