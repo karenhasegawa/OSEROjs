@@ -80,12 +80,14 @@ class Judgment{
 
                 for(let i=e+1;hantei_array[i]!=3;i+=Vector[j]){//番外ではない限りチェックし続ける       
                    
+                    console.log(hantei_array[i],i);
                     if(hantei_array[i]==hantei_array[i+1])break;//現在地のとなりと同じ色なら
 
                     else if(hantei_array[i]!=hantei_array[i+1]){//
 
                         player==1 ? pieace.push(player) : pieace.push(2);
                         console.log("push可能");
+                        break;
                     }
     
     
