@@ -58,7 +58,7 @@ class Judgment{
 
         
         if(t==0)player=2;//先手黒に設定
-        else player=1;//後手白に設定。
+        else player=1;//後手白に設定
 
         if(player==1)console.log("今は白の番です");
         if(player==2)console.log("今は黒の番です");//表示は1ターン遅延があるので注意
@@ -86,12 +86,12 @@ class Judgment{
 
                 for(let i=e+Vector[j];hantei_array[i]!=hantei_array[i+Vector[j]];i+=Vector[j]){//playerと同じ色ではない限りチェックし続ける (条件3)      
                    
-                  
-                    /* if(hantei_array[i+Vector[j]]==player){//ベクトルの先がplayerと同じ色の時
-                        console.log("");
-                        break;
-                    }*/
-
+                    if(hantei_array[i+Vector[j]]==0 || hantei_array[i+Vector[j]]==3){//ベクトルの先に
+                        for(let u=n-1;u>-2;u--){
+                            coordinate.pop();pieace.pop();//データ消去
+                            break;
+                        }
+                    }                    
                     if(player==hantei_array[i+Vector[j]]){//ベクトルのとなりと違う色なら
                        
                         player==1 ? pieace.push(player) : pieace.push(2);//表示データの保存
@@ -100,7 +100,6 @@ class Judgment{
                         n += 1;
                         continue;
                     }
-                   // }
        
                 }
                 
@@ -112,14 +111,14 @@ class Judgment{
                     this.changepeace.setDisc(x,y,hantei_array[e]);//置く駒の表示
                     console.log(x,y,hantei_array[e]);
 
-                    for(let j=n-1;j>-2;j--){//末端からPOP
+                    for(let u=n-1;u>-2;u--){//末端からPOP
 
                         console.log(coordinate);
 
-                        if(j==-1){
-
+                        if(u==-1){
                             console.log("条件3をクリア後脱出");
-                            return 0;//ターンは変更のまま//条件3をクリア後脱出
+                            if(j==8)return 0;//ターンは変更のまま//条件3をクリア後脱出
+                            break;                          
                         }
                         else{
                             let pop = coordinate.pop();
