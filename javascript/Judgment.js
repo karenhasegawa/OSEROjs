@@ -66,6 +66,7 @@ class Judgment{
         else player=1;//後手白に設定
 
         console.log("今は"+player+"の番です。");
+        console.log("hantei_array:"+hantei_array);
 
         if(hantei_array[e]!=0)return -1;//マスが空いているか。
 
@@ -73,12 +74,11 @@ class Judgment{
             console.log("現在のチェック座標:"+Vector[j]);
             if(player==hantei_array[e+Vector[j]]){
                 console.log(Vector[j]+":この方向にはおけません");//原点のとなりに同じ色がある
-                j--;
                 continue;
             }
             else {//その方向に置けるなら
 
-                for(let i=e+1;hantei_array[i]!=3;i+=Vector[j]){//番外ではない限りチェックし続ける       
+                for(let i=e+1;hantei_array[i]!=3 && hantei_array[i]!=0;i+=Vector[j]){//番外ではない限りチェックし続ける       
                    
                     console.log(hantei_array[i],i);
                     if(hantei_array[i]==hantei_array[i+1])break;//現在地のとなりと同じ色なら
@@ -87,7 +87,6 @@ class Judgment{
 
                         player==1 ? pieace.push(player) : pieace.push(2);
                         console.log("push可能");
-                        break;
                     }
     
     
