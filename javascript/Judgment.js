@@ -164,8 +164,56 @@ class Judgment{
         let p;
         player==1 ? p=1 : p=2;
         for(let x=1;x<9;x++){
-            for(let y=1;y<10;y++){
-                if(hantei_array[this.changecoordinate.pos(x,y)]==)
+            for(let y=1;y<10;y++){//スイッチの方がいいかも
+                let e = this.changecoordinate.pos(x,y);
+                if(hantei_array[e]==p){
+                    if(hantei_array[e]!=0){
+                        console.log("条件1リターン"); 
+                        return -1;//マスが空いているか。(条件1)            
+                    }
+            
+                    for(let j=0;j<9;j++){//8方向判定
+            
+                        n=0;
+            
+                        console.log("現在のチェック座標:"+Vector[j]);
+            
+                        if(hantei_array[e+Vector[j]]==player || hantei_array[e+Vector[j]]==0 || hantei_array[e+Vector[j]]==3){
+                            console.log(Vector[j]+":この方向には裏返しできません");               
+                            continue;
+                            /*
+                                現在のベクトルに対し裏返せない(置き場におけない)条件
+                                ・現在のベクトルに対し、置き場のとなりがplayerと同じ色であるとき
+                                ・現在のベクトルに対し、置き場のとなりが空きマスであるとき
+                                ・現在のベクトルに対し、置き場のとなりが番外である時                    
+                                （条件2までを処理）
+                            */
+                        }//条件2終了
+            
+                        else{//条件3開始
+            
+                            for(let i=e+Vector[j];hantei_array[i]!=player;i+=Vector[j]){//黒か白である限りチェックし続ける (条件3)      
+                                 console.log("ベクトルの判定開始:"+i);
+                                if(hantei_array[i]==1||hantei_array[i]==2){//ベクトルのとなりと違う色なら                       
+                                    player==1 ? pieace.push(player) : pieace.push(2);//表示データの保存
+                                    coordinate.push(i);
+                                    n += 1;
+                                    continue;
+                                }
+                                if(hantei_array[i]==0 || hantei_array[i]==3){                        
+                                
+                                    for(let u=n-1;u>-2;u--){
+                                        coordinate.pop();pieace.pop();//データ消去
+                                        console.log(Vector[j]+":データ消去");
+                                        n=0;
+                                    }
+                                    break;       
+                                }
+            
+                            }   
+                                               
+                            console.log("push回数:"+n);
+                }
             }
         }
     }
