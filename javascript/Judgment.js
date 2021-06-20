@@ -152,9 +152,24 @@ class Judgment{
         }//8方向判定終了
 
         if(count==0)return -1;
-        else return 0;
+        else {
+
+            let tc = this.isPass(player);
+            return 0;
+        }
               
     }//othello
+
+    isPass(player){
+        let p;
+        player==1 ? p=1 : p=2;
+        for(let x=1;x<9;x++){
+            for(let y=1;y<10;y++){
+                if(hantei_array[this.changecoordinate.pos(x,y)]==)
+            }
+        }
+    }
+
 
 }//クラス終わり
 

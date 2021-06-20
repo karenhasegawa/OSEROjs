@@ -32,6 +32,8 @@ class GameDirecter{
             0:ターンを進める
         */
        console.log( "現在ターン:"+GameDirecter.turn);
+
+       
     }
 
 }
