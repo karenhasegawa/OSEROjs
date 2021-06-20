@@ -45,7 +45,7 @@ class Judgment{
     Othello(x,y,turn){
 
         let e = this.changecoordinate.pos(x,y);//8×8の2次元座標9×10+1の1次元座標に変更
-        let t = turn % 2;//偶数の判定（パス判定では使えない）
+        let t = turn % 2;//偶数の判定
         let player = 0;
         let coordinate= new Array(64);
 
@@ -56,6 +56,7 @@ class Judgment{
         let pieace= new Array(7);
         let n = 0;
         let count=0;
+        let judgment = new Judgment;
 
         
         if(t==0)player=2;//先手黒に設定
@@ -65,8 +66,8 @@ class Judgment{
         //d=0:石を消す
         //d=1:黒石を置く
         //d=2:白石を置く
-        if(player==1)console.log("置いたのは黒の番です");
-        if(player==2)console.log("置いたのは白の番です");//表示は1ターン遅延があるので注意
+        if(player==1)console.log("置いたのは黒です");
+        if(player==2)console.log("置いたのは白です");//表示は1ターン遅延があるので注意
 
         if(hantei_array[e]!=0){
             console.log("条件1リターン"); 
@@ -153,23 +154,26 @@ class Judgment{
 
         if(count==0)return -1;
         else {
-
-           // let tc = this.isPass(player);
             return 0;
         }
               
     }//othello
 
-    /*isPass(player){
-        let p;
-        player==1 ? p=1 : p=2;
+    isPass(turn){//次のターンを受け取る
+        let t = turn % 2;//偶数の判定
+        let player;
+        let count;
+        if(t==0)player=2;//先手黒に設定
+        else player=1;//後手白に設定
+
         for(let x=1;x<9;x++){
-            for(let y=1;y<10;y++){//スイッチの方がいいかも
+            for(let y=1;y<10;y++){
+
                 let e = this.changecoordinate.pos(x,y);
-                if(hantei_array[e]==p){
+                if(hantei_array[e]==player){
                     if(hantei_array[e]!=0){
-                        console.log("条件1リターン"); 
-                        return -1;//マスが空いているか。(条件1)            
+                        console.log("ispass:条件1リターン"); 
+                        break;            
                     }
             
                     for(let j=0;j<9;j++){//8方向判定
@@ -188,35 +192,38 @@ class Judgment{
                                 ・現在のベクトルに対し、置き場のとなりが番外である時                    
                                 （条件2までを処理）
                             */
-                       /* }//条件2終了
+                        }//条件2終了
             
-                        else{//条件3開始
+                    else{//条件3開始
             
-                            for(let i=e+Vector[j];hantei_array[i]!=player;i+=Vector[j]){//黒か白である限りチェックし続ける (条件3)      
+                            for(let i=e+Vector[j];hantei_array[i]!=player;i+=Vector[j]){//(条件3)      
                                  console.log("ベクトルの判定開始:"+i);
-                                if(hantei_array[i]==1||hantei_array[i]==2){//ベクトルのとなりと違う色なら                       
-                                    player==1 ? pieace.push(player) : pieace.push(2);//表示データの保存
-                                    coordinate.push(i);
-                                    n += 1;
+                                if(hantei_array[i]==1||hantei_array[i]==2){                     
+                                    n += 1;//挟まれている駒をカウント
                                     continue;
                                 }
                                 if(hantei_array[i]==0 || hantei_array[i]==3){                        
                                 
-                                    for(let u=n-1;u>-2;u--){
-                                        coordinate.pop();pieace.pop();//データ消去
-                                        console.log(Vector[j]+":データ消去");
-                                        n=0;
-                                    }
                                     break;       
                                 }
             
-                            }   
-                                               
-                            console.log("push回数:"+n);
+                            } 
+                            console.log("ispass:ひっくり返す回数:"+n);
+                        }
+
+                        if(n!=0){
+                            count++;
+                        }
+
+                    }//8方向判定終わり                                                 
+                           
                 }
-            }
-        }
-    }*///isPass
+            }//for_y
+        }//for_x
+
+        if(count>0)return true;
+        else return player;
+    }//isPass
 
 
 }//クラス終わり

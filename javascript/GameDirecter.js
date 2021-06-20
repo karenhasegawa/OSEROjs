@@ -4,7 +4,6 @@ class GameDirecter{
 
         this.judgment = new Judgment;//判定の初期設定へ
         
- 
         if( turn == 1 ){
             this.judgment.Setup_Othello();
             console.log("今は黒の番です。");
@@ -22,6 +21,7 @@ class GameDirecter{
         let changecoordinate = new ChangeCoordinate;
         let turn = GameDirecter.turn;
         let x,y;
+        let tc;
 
         x = changecoordinate.pos_view_x(id);
         y = changecoordinate.pos_view_y(id);
@@ -31,7 +31,15 @@ class GameDirecter{
             －1:ターンを進めない
             0:ターンを進める
         */
-       console.log( "現在ターン:"+GameDirecter.turn);
+        tc = this.judgment.isPass(GameDirecter.turn);//次のターンを渡す
+        if(tc!=true){
+            if(tc==1)console.log("黒はパスです");
+            if(tc==2)console.log("白はパスです");
+            GameDirecter.turn++;
+        }//パス
+        
+        console.log("ispassの引数；"+tc);
+        console.log( "現在ターン:"+GameDirecter.turn);
 
        
     }
