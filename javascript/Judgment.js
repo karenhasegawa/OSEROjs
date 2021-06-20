@@ -56,7 +56,6 @@ class Judgment{
         let pieace= new Array(7);
         let n = 0;
         let count=0;
-        let judgment = new Judgment;
 
         
         if(t==0)player=2;//先手黒に設定
@@ -163,27 +162,29 @@ class Judgment{
         let t = turn % 2;//偶数の判定
         let player;
         let count;
-        if(t==0)player=2;//先手黒に設定
-        else player=1;//後手白に設定
+        if(t==0)player=1;//先手黒に設定
+        else player=2;//後手白に設定
+        let Vector=[-10,-9,-8,
+                    -1, 0,  1,
+                     8, 9, 10];//八方向ベクトル
 
-        for(let x=1;x<9;x++){
-            for(let y=1;y<10;y++){
+        for(let x=0;x<8;x++){
+            for(let y=0;y<8;y++){//9*10座標を8*8の座標の範囲絞って判定
 
                 let e = this.changecoordinate.pos(x,y);
-                if(hantei_array[e]==player){
-                    if(hantei_array[e]!=0){
-                        console.log("ispass:条件1リターン"); 
-                        break;            
-                    }
-            
+
+                if(hantei_array[e]==player){//次ターンの駒を選択
+        
+                    console.log("ispass駒"+x+" "+y+" "+player);
+                    console.log();
                     for(let j=0;j<9;j++){//8方向判定
             
-                        n=0;
+                        let n=0;
             
-                        console.log("現在のチェック座標:"+Vector[j]);
+                        console.log("ispass:現在のチェック座標:"+Vector[j]);
             
                         if(hantei_array[e+Vector[j]]==player || hantei_array[e+Vector[j]]==0 || hantei_array[e+Vector[j]]==3){
-                            console.log(Vector[j]+":この方向には裏返しできません");               
+                            console.log(Vector[j]+":ispassこの方向には裏返しできません");               
                             continue;
                             /*
                                 現在のベクトルに対し裏返せない(置き場におけない)条件
@@ -194,16 +195,16 @@ class Judgment{
                             */
                         }//条件2終了
             
-                    else{//条件3開始
+                        else{//条件3開始
             
                             for(let i=e+Vector[j];hantei_array[i]!=player;i+=Vector[j]){//(条件3)      
-                                 console.log("ベクトルの判定開始:"+i);
+                                 console.log("ispass:ベクトルの判定開始:"+i);
                                 if(hantei_array[i]==1||hantei_array[i]==2){                     
                                     n += 1;//挟まれている駒をカウント
                                     continue;
                                 }
-                                if(hantei_array[i]==0 || hantei_array[i]==3){                        
-                                
+                                if(hantei_array[i]==0 || hantei_array[i]==3){ 
+                                    n=0;                                                      
                                     break;       
                                 }
             
@@ -221,8 +222,8 @@ class Judgment{
             }//for_y
         }//for_x
 
-        if(count>0)return true;
-        else return player;
+        if(count==0)return player;//playerは置けない
+        else return true;//playerはおける
     }//isPass
 
 

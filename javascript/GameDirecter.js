@@ -33,12 +33,12 @@ class GameDirecter{
         */
         tc = this.judgment.isPass(GameDirecter.turn);//次のターンを渡す
         if(tc!=true){
-            if(tc==1)console.log("黒はパスです");
-            if(tc==2)console.log("白はパスです");
-            GameDirecter.turn++;
+            if(tc==1)console.log("ターン:"+ GameDirecter.turn+"白をとばして黒です");//とばす駒を判定した
+            if(tc==2)console.log("ターン:"+ GameDirecter.turn+"黒をとばして白です");
+            GameDirecter.turn++;//パス発生でターンを一つとばす
         }//パス
         
-        console.log("ispassの引数；"+tc);
+        console.log("ispassの引数:"+tc);
         console.log( "現在ターン:"+GameDirecter.turn);
 
        
