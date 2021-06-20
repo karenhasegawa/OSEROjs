@@ -14,8 +14,6 @@ class ChangePieace{
         let p = changecoordinate.pos_view(x,y);
         let ID = document.getElementById(p);
 
-        console.log(ID);
-
         let pieaceElement = ID.firstChild;
         
         pieaceElement.style.display = d == 0 ? "none" : "block";

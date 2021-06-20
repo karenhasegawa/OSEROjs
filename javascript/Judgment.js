@@ -56,10 +56,9 @@ class Judgment{
         let pieace= new Array(7);
         let n = 0;
         let count=0;
-
         
-        if(t==0)player=2;//先手黒に設定
-        else player=1;//後手白に設定
+        if(t==0)player=2;//後手白に設定(偶数)
+        else player=1;//先手黒に設定
 
         //(x,y,d)のマスに石を置く
         //d=0:石を消す
@@ -117,7 +116,7 @@ class Judgment{
 
                 if(n!=0){ /*表示の呼び出し*/
 
-                    count +=1;//turnのためのカウント
+                    count ++;//turnのためのカウント
                     
                     hantei_array[e]=player;
                     this.changepeace.setDisc(x,y,hantei_array[e]);//置く駒の表示
@@ -158,12 +157,20 @@ class Judgment{
               
     }//othello
 
+    //(x,y,d)のマスに石を置く
+        //d=0:石を消す
+        //d=1:黒石を置く（奇数）
+        //d=2:白石を置く（偶数）
     isPass(turn){//次のターンを受け取る
+        console.log(turn);
         let t = turn % 2;//偶数の判定
         let player;
-        let count;
-        if(t==0)player=1;//先手黒に設定
-        else player=2;//後手白に設定
+        let count = 0;
+        if(t==0)player=2;//後手白に設定(偶数)
+        else player=1;//先手黒に設定
+        let n = 0;
+
+        
         let Vector=[-10,-9,-8,
                     -1, 0,  1,
                      8, 9, 10];//八方向ベクトル
@@ -176,10 +183,9 @@ class Judgment{
                 if(hantei_array[e]==player){//次ターンの駒を選択
         
                     console.log("ispass駒"+x+" "+y+" "+player);
-                    console.log();
                     for(let j=0;j<9;j++){//8方向判定
             
-                        let n=0;
+                        n=0;
             
                         console.log("ispass:現在のチェック座標:"+Vector[j]);
             
@@ -198,15 +204,21 @@ class Judgment{
                         else{//条件3開始
             
                             for(let i=e+Vector[j];hantei_array[i]!=player;i+=Vector[j]){//(条件3)      
-                                 console.log("ispass:ベクトルの判定開始:"+i);
+                                 console.log("ispass:ベクトルの判定開始");
+                                if(hantei_array[i]==player){
+                                    n=0;
+                                    break;
+                                }
+                                if(hantei_array[i]==0)break;
+                                if(hantei_array[i+Vector[j]]==3){
+                                    n=0;
+                                    break;
+                                }                                                                
                                 if(hantei_array[i]==1||hantei_array[i]==2){                     
                                     n += 1;//挟まれている駒をカウント
                                     continue;
-                                }
-                                if(hantei_array[i]==0 || hantei_array[i]==3){ 
-                                    n=0;                                                      
-                                    break;       
-                                }
+                                }                               
+                               
             
                             } 
                             console.log("ispass:ひっくり返す回数:"+n);
@@ -222,8 +234,10 @@ class Judgment{
             }//for_y
         }//for_x
 
-        if(count==0)return player;//playerは置けない
-        else return true;//playerはおける
+        console.log("カウント："+count);
+
+        if(count == 0)return player;//playerは置けない
+        else return 0;//playerはおける
     }//isPass
 
 
