@@ -93,33 +93,26 @@ class Judgment{
 
             else{//条件3開始
 
-                for(let i=e+Vector[j];hantei_array[i]==1||hantei_array[i]==2;i+=Vector[j]){//黒か白である限りチェックし続ける (条件3)      
-                   
-                    console.log("ベクトルの判定開始:"+i);
-
-                    if(player
-
-                    if(player==hantei_array[i]){//ベクトルのとなりと違う色なら                       
+                for(let i=e+Vector[j];hantei_array[i]!=player;i+=Vector[j]){//黒か白である限りチェックし続ける (条件3)      
+                     console.log("ベクトルの判定開始:"+i);
+                    if(hantei_array[i]==1||hantei_array[i]==2){//ベクトルのとなりと違う色なら                       
                         player==1 ? pieace.push(player) : pieace.push(2);//表示データの保存
                         coordinate.push(i);
                         n += 1;
                         continue;
-                    }    
-                    if(player==hantei_array[i+Vector[j]])break;
-                    if(hantei_array[i+Vector[j]]==0 || hantei_array[i+Vector[j]]==3){                        
+                    }
+                    if(hantei_array[i]==0 || hantei_array[i]==3){                        
                     
-                            for(let u=n-1;u>-2;u--){
-                                coordinate.pop();pieace.pop();//データ消去
-                                console.log(Vector[j]+":データ消去");
-                                n=0;
-                            }
-                            break;       
+                        for(let u=n-1;u>-2;u--){
+                            coordinate.pop();pieace.pop();//データ消去
+                            console.log(Vector[j]+":データ消去");
+                            n=0;
+                        }
+                        break;       
                     }
 
-                    
-       
-                }
-                
+                }   
+                                   
                 console.log("push回数:"+n);
 
                 if(n!=0){ /*表示の呼び出し*/
