@@ -154,13 +154,13 @@ class Judgment{
         if(count==0)return -1;
         else {
 
-            let tc = this.isPass(player);
+           // let tc = this.isPass(player);
             return 0;
         }
               
     }//othello
 
-    isPass(player){
+    /*isPass(player){
         let p;
         player==1 ? p=1 : p=2;
         for(let x=1;x<9;x++){
@@ -188,7 +188,7 @@ class Judgment{
                                 ・現在のベクトルに対し、置き場のとなりが番外である時                    
                                 （条件2までを処理）
                             */
-                        }//条件2終了
+                       /* }//条件2終了
             
                         else{//条件3開始
             
@@ -216,7 +216,7 @@ class Judgment{
                 }
             }
         }
-    }
+    }*///isPass
 
 
 }//クラス終わり
