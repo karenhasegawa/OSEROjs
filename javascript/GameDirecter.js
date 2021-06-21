@@ -32,13 +32,13 @@ class GameDirecter{
         */
         ta = this.judgment.Othello(x,y,GameDirecter.turn);//ターンを返せる
         
+        console.log(ta);
         GameDirecter.turn += ta;
 
-        console.log( "仮定ターン:"+GameDirecter.turn);
+        //console.log( "仮定ターン:"+GameDirecter.turn);
 
         if(ta==0){//0:ターンを進めるのときパス判定を実行
             tc = this.judgment.isPass(GameDirecter.turn+1);//次のターンを渡す
-            console.log(tc);
             if(tc==1 || tc ==2){
                 //(x,y,d)のマスに石を置く
                 //d=0:石を消す
@@ -49,7 +49,7 @@ class GameDirecter{
                 GameDirecter.turn+=1;//パス発生でターンを一つとばす
                 console.log("ispassの引数:"+tc);
 
-                tc = this.judgment.isPass(GameDirecter.turn+2);//次の次ターンを渡す
+                tc = this.judgment.isPass(GameDirecter.turn+1);//次の次ターンを渡す
                 if(tc==1 || tc ==2){
                     console.log("ゲーム終了");
                 }
