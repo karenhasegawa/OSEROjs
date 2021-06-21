@@ -64,8 +64,8 @@ class Judgment{
         //d=0:石を消す
         //d=1:黒石を置く
         //d=2:白石を置く
-        if(player==1)console.log("置いたのは黒です");
-        if(player==2)console.log("置いたのは白です");//表示は1ターン遅延があるので注意
+        if(player==1)console.log("黒を判定した");
+        if(player==2)console.log("白を判定した");//表示は1ターン遅延があるので注意
 
         if(hantei_array[e]!=0){
             //console.log("条件1リターン"); 
@@ -179,8 +179,8 @@ class Judgment{
         for(let x=0;x<8;x++){
             for(let y=0;y<8;y++){//9*10座標を8*8の座標の範囲絞って判定
 
-                let e = this.changecoordinate.pos(x,y);
-
+                let e = this.changecoordinate.pos(x,y);                
+                
                 if(hantei_array[e]==player){//次ターンの駒を選択
         
                     //console.log("ispass駒"+x+" "+y+" "+player);
@@ -204,17 +204,12 @@ class Judgment{
             
                         else{//条件3開始
             
-                            for(let i=e+Vector[j];hantei_array[i]!=player;i+=Vector[j]){//(条件3)      
-                                 //console.log("ispass:ベクトルの判定開始");
-                                if(hantei_array[i]==player){
+                            for(let i=e+Vector[j];hantei_array[i]!=0;i+=Vector[j]){//(条件3)      
+                                 //console.log("ispass:ベクトルの判定開始");                                
+                                if(hantei_array[i+Vector[j]]==3 || hantei_array[i]==player){
                                     n=0;
                                     break;
-                                }
-                                if(hantei_array[i]==0)break;
-                                if(hantei_array[i+Vector[j]]==3){
-                                    n=0;
-                                    break;
-                                }                                                                
+                                }                                                    
                                 if(hantei_array[i]==1||hantei_array[i]==2){                     
                                     n += 1;//挟まれている駒をカウント
                                     continue;
@@ -226,7 +221,9 @@ class Judgment{
                         }
 
                         if(n!=0){
+                            console.log(x+" "+y+" "+Vector[j]);
                             count++;
+                            console.log(Vector[j]);
                         }
 
                     }//8方向判定終わり                                                 

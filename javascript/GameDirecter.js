@@ -25,7 +25,8 @@ class GameDirecter{
 
         x = changecoordinate.pos_view_x(id);
         y = changecoordinate.pos_view_y(id);
-
+        
+        console.log( "仮ターン:"+GameDirecter.turn);
         /*引数
             －1:ターンを進めない
             0:ターンを進める
@@ -35,10 +36,11 @@ class GameDirecter{
         console.log(ta);
         GameDirecter.turn += ta;
 
-        //console.log( "仮定ターン:"+GameDirecter.turn);
+        
 
         if(ta==0){//0:ターンを進めるのときパス判定を実行
             tc = this.judgment.isPass(GameDirecter.turn+1);//次のターンを渡す
+            console.log(tc);
             if(tc==1 || tc ==2){
                 //(x,y,d)のマスに石を置く
                 //d=0:石を消す
@@ -57,7 +59,11 @@ class GameDirecter{
             }//パス
         }
                         
-        console.log( "現在ターン:"+GameDirecter.turn);
+        console.log( "確定ターン:"+GameDirecter.turn);
+        let t = GameDirecter.turn % 2;//偶数の判定        
+        if(t==0)console.log("今は黒の番です");//(偶数)
+        else console.log("今は白の番です");
+        
        
     }
 
