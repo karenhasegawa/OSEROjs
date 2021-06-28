@@ -65,11 +65,33 @@
     clear: both;
 }
 
+.coma_turn{
+    background-color:#FFFFFF;
+    overflow-y: scroll;
+    width: 285px;
+    height: 165px;
+    margin: 30px 30px 30px 30px;
+}
+
 .back{
-    background-color:cadetblue;
+    background-color:#FFFFFF;
+    width: 120px;
+    height: 45px;
+    margin: 30px 5% 30px 5%;
 }
 
 .next{
-    background-color:cadetblue;
+    background-color:#FFFFFF;
+    width: 120px;
+    height: 45px;
+    margin: 30px 5% 30px 5%;
+
+}
+
+.pc{
+    background-color:#FFFFFF;
+    width: 280px;
+    height: 70px;
+    margin: 30px 30px 5% 5%;
 }
 
