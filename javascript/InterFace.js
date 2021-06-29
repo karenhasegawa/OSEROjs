@@ -4,3 +4,11 @@ function getID(c){
 
 }
 
+function getBottom(name){
+
+    console.log(name.id);
+
+}
+
+
+

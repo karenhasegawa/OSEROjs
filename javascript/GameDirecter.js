@@ -57,12 +57,15 @@ class GameDirecter{
                 }
 
             }//パス
+
+             gameview(GameDirecter.turn);//表示
         }
                         
         console.log( "確定ターン:"+GameDirecter.turn);
         let t = GameDirecter.turn % 2;//偶数の判定        
         if(t==0)console.log("今は黒の番です");//(偶数)
         else console.log("今は白の番です");
+       
         
        
     }

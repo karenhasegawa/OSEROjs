@@ -16,9 +16,9 @@
             </div>
             <div class="menu">
                 <div class="coma_turn">[0]手番 場所　　</div>
-                <input type="button" class="back" value="戻る">
-                <input type="button" class="next" value="次へ">
-                <input type="button" class="pc" value="コンピュータと対戦" >
+                <input type="button" id="back" value="戻る" onclick="getBottom(this)">
+                <input type="button" id="next" value="次へ" onclick="getBottom(this)">
+                <input type="button" id="pc" value="コンピュータと対戦" onclick="getBottom(this)">
             </div>
         </div>
         <script src="javascript/index.js"></script>
@@ -30,8 +30,9 @@
         <script src="javascript/Onclick.js"></script>
         <script src="javascript/Judgment.js"></script>
         <script src="javascript/ChangeCoordinate.js"></script>
+        <script src="javascript/GameView.js"></script>
         <!--                      
-        <script src="PieaceInterFace.js"></script>
+       
         <script src="GameJage.js"></script>
         ---->
     </body>

@@ -170,7 +170,6 @@ class Judgment{
         if(t==0)player=2;//後手白に設定(偶数)
         else player=1;//先手黒に設定
         let n = 0;
-
         
         let Vector=[-10,-9,-8,
                     -1, 0,  1,
