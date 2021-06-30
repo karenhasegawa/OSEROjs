@@ -39,6 +39,10 @@ class Judgment{
                 }
             }
         }
+
+        this.keepdata = new KeepData;
+
+
         return 0;
     }
 
@@ -48,7 +52,8 @@ class Judgment{
         let t = turn % 2;//偶数の判定
         let player = 0;
         let coordinate= new Array(64);
-
+        this.x = x;
+        this.y = y;
         let Vector=[-10,-9,-8,
                      -1, 0, 1,
                       8, 9,10];//八方向ベクトル
@@ -141,6 +146,7 @@ class Judgment{
                             /*9×10+1の座標はi*/ 
                             console.log(x,y,hantei_array[pop]);
                             this.changepeace.setDisc(x,y,hantei_array[pop]);
+                            this.keepdata(x,y,hantei_array[pop])
                             
                         }
 
@@ -152,10 +158,8 @@ class Judgment{
         }//8方向判定終了
 
         if(count==0)return -1;
-        else {
-            return 0;
-        }
-              
+        else return 0;
+        
     }//othello
 
     //(x,y,d)のマスに石を置く

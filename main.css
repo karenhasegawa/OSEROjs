@@ -73,14 +73,14 @@
     margin: 30px 30px 30px 30px;
 }
 
-.back{
+#back{
     background-color:#FFFFFF;
     width: 120px;
     height: 45px;
     margin: 30px 5% 30px 5%;
 }
 
-.next{
+#next{
     background-color:#FFFFFF;
     width: 120px;
     height: 45px;
@@ -88,7 +88,7 @@
 
 }
 
-.pc{
+#pc{
     background-color:#FFFFFF;
     width: 280px;
     height: 70px;
