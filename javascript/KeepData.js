@@ -1,12 +1,16 @@
 class KeepData{
 
-    constructor(x,y,hantei){
+    constructor(){
 
-        this.hanteidata = hantei; 
-        console.log(this.hanteidata,x,y);
+        this.hanteidata = 0; 
+        console.log(this.hanteidata);
 
     }
 
+    keep(){
+        console.log("helloworld");
+
+    }
     
 
 

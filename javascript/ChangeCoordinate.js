@@ -1,12 +1,5 @@
 class ChangeCoordinate {
 
-    constructor(x,y,d){
-        this.x;
-        this.y;
-        this.d;
-        this.p;
-    }
-
     pos_view(x,y){
        
         return y * 8 + x;//8×8の2次元座標を[64]の1次元座標に変換

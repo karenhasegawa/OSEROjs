@@ -1,9 +1,9 @@
 class Judgment{
 
-    constructor(id){
+  /*  constructor(id){
         this.changecoordinate = new ChangeCoordinate;
         this.changepeace = new ChangePieace;
-    }
+    }*/
 /*  
     0:空マス
     1:黒石
@@ -11,6 +11,9 @@ class Judgment{
     3:盤外
 */
     Setup_Othello(){
+
+        this.changecoordinate = new ChangeCoordinate;
+        this.changepeace = new ChangePieace;
     
 
         for(let i=0;i<hantei_array.length;i++){//全マスを番外設定
@@ -40,13 +43,17 @@ class Judgment{
             }
         }
 
-        this.keepdata = new KeepData;
+        this.keepdata = new KeepData;//データ保存のインスタンス作成(１ゲーム一つ)
+        console.log(this.keepdata);
 
 
         return 0;
     }
 
     Othello(x,y,turn){
+
+        this.changecoordinate = new ChangeCoordinate;
+        this.changepeace = new ChangePieace;
 
         let e = this.changecoordinate.pos(x,y);//8×8の2次元座標9×10+1の1次元座標に変更
         let t = turn % 2;//偶数の判定
@@ -146,7 +153,8 @@ class Judgment{
                             /*9×10+1の座標はi*/ 
                             console.log(x,y,hantei_array[pop]);
                             this.changepeace.setDisc(x,y,hantei_array[pop]);
-                            this.keepdata(x,y,hantei_array[pop])
+                            console.log(this);
+                            this.keepdata.keep();
                             
                         }
 
@@ -167,6 +175,9 @@ class Judgment{
         //d=1:黒石を置く（奇数）
         //d=2:白石を置く（偶数）
     isPass(turn){//次のターンを受け取る
+
+        this.changecoordinate = new ChangeCoordinate;
+        this.changepeace = new ChangePieace;
 
         let t = turn % 2;//偶数の判定
         let player;

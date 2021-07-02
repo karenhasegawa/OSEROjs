@@ -1,8 +1,4 @@
 class ChangePieace{
-
-    constructor(){
-      
-    }
     
     //(x,y,d)のマスに石を置く
     //d=0:石を消す
@@ -22,5 +18,15 @@ class ChangePieace{
             pieaceElement.style.backgroundColor = d == 1 ? "black" : "white";
         }
 
+    }
+
+    outDisc(x,y){//非表示設定
+        let changecoordinate = new ChangeCoordinate;
+        let p = changecoordinate.pos_view(x,y);
+        let ID = document.getElementById(p);
+
+        let pieaceElement = ID.firstChild;
+
+        pieaceElement.style.display = "none";
     }
 }
