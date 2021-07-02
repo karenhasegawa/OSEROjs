@@ -2,21 +2,19 @@ class GameDirecter{
 
     constructor (turn){
 
-        this.judgment = new Judgment;//判定の初期設定へ
-        
-        if( turn == 1 ){//turnは1から！！
-            this.judgment.Setup_Othello();
-            console.log("今は黒の番です。");
-        }
+        this.judgment = new Judgment;//判定の初期設定へ               
+        this.judgment.Setup_Othello();
+        console.log("今は黒の番です。");       
+       
+    }
+
+    Conect(id){
         
         if( turn > 1 ){
 
             GameDirecter.turn++;//ターンは1（奇数：黒）からスタート 
          
         } 
-    }
-
-    Conect(id){
 
         let changecoordinate = new ChangeCoordinate;
         let x,y;
