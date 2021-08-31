@@ -1,4 +1,4 @@
-class First{
+class Initial_setting{
 
     constructor(ArrowId){
  //                                      console.log(ArrowId);
@@ -17,7 +17,6 @@ class First{
             //----------ID保存------------------//
             arrowid.push(name);
         }
-
 //                                          console.log(arrowid);
         return arrowid;
         

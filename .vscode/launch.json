@@ -8,7 +8,7 @@
             "type": "pwa-chrome",
             "request": "launch",
             "name": "Open index.html",
-            "file": "c:\\Users\\karen\\mywebmake\\OSEROjs\\index.html"
+            "file": "c:\\website_make\\OSEROjs\\index.html"
         }
     ]
 }

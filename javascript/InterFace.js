@@ -1,6 +1,6 @@
 function getID(c){
 
-    new Onclick(2,c.id);
+    game_board.Conect(c.id);
 
 }
 
