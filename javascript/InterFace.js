@@ -10,7 +10,9 @@ function getBottom(name){
 
     if(name.id=="back")console.log("BACK");
     if(name.id=="next")console.log("NEXT");
-    if(name.id=="pc")console.log("PC");
+    if(name.id=="pc"){
+        game_board.Pc_Conect();
+    }
 
 }
 

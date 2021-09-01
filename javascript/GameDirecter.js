@@ -58,9 +58,12 @@ class GameDirecter{
         let t = this.turn % 2;//偶数の判定        
         if(t==0)console.log("今は黒の番です");//(偶数)
         else console.log("今は白の番です");
-       
-        
-       
+              
+    }
+
+    Pc_Conect(){
+        new Population_Intell;
+        return this.turn;
     }
 
 
