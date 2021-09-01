@@ -57,7 +57,6 @@ class Judgment{
 
         let hantei_array = this.Hantei_array;
         let e = this.changecoordinate.pos(x,y);//8×8の2次元座標9×10+1の1次元座標に変更
-        console.log(e);
         let t = turn % 2;//偶数の判定
         let player = 0;
         let coordinate= new Array(64);
@@ -69,8 +68,8 @@ class Judgment{
         let n = 0;
         let count=0;
         
-        if(t==0)player=1;//先手黒に設定
-        else player=2;//後手白に設定(偶数)
+        if(t==0)player=2;//先手白に設定
+        else player=1;//後手黒に設定(偶数)
 
         //(x,y,d)のマスに石を置く
         //d=0:石を消す

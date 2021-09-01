@@ -21,6 +21,7 @@ class GameDirecter{
         x = changecoordinate.pos_view_x(id);
         y = changecoordinate.pos_view_y(id);
         
+        this.turn++;
         console.log( "仮ターン:"+this.turn);
         /*引数
             －1:ターンを進めない
@@ -55,8 +56,8 @@ class GameDirecter{
                         
         console.log( "確定ターン:"+this.turn);
         let t = this.turn % 2;//偶数の判定        
-        if(t==0)console.log("今は白の番です");//(偶数)
-        else console.log("今は黒の番です");
+        if(t==0)console.log("今は黒の番です");//(偶数)
+        else console.log("今は白の番です");
        
         
        
