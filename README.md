@@ -1,7 +1,7 @@
 # OSEROjs
 オセロゲーム開発
 
-参考資料：[中島八段のオセロチャンネル](https://www.youtube.com/channel/UCpEayRFdPULqLjvpIYTdaOw/channels)s
+参考資料：[中島八段のオセロチャンネル](https://www.youtube.com/channel/UCpEayRFdPULqLjvpIYTdaOw/channels)
 
 ↓クリック<br>
 [作ったオセロゲーム](https://karenhasegawa.github.io/OSEROjs/)
